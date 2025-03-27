@@ -1,0 +1,64 @@
+{
+	"info": {
+		"_postman_id": "775f10b6-c5c0-4df6-9dd6-742283ae035b",
+		"name": "FlagExplorerBackendTests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29429125",
+		"_collection_link": "https://blue-station-877547.postman.co/workspace/New-Team-Workspace~11421332-2f24-4f57-a2d8-d56ed1b33bde/collection/29429125-775f10b6-c5c0-4df6-9dd6-742283ae035b?action=share&source=collection_link&creator=29429125"
+	},
+	"item": [
+		{
+			"name": "GetAllCountriesTest",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "GetSpecificCountry",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Country details are correct\", function () {\r",
+							"    let jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.be.an('object');\r",
+							"    pm.expect(jsonData).to.have.property(\"name\", \"South Africa\");\r",
+							"    pm.expect(jsonData).to.have.property(\"population\");\r",
+							"    pm.expect(jsonData).to.have.property(\"capital\");\r",
+							"    pm.expect(jsonData).to.have.property(\"flagUrl\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:5001/api/countries/South Africa",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"api",
+						"countries",
+						"South Africa"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
