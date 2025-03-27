@@ -18,9 +18,9 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Restore dependencies
-      run: dotnet restore .\FlagExplorerBackend.csproj
+      run: dotnet restore ..\..\FlagExplorerBackend.csproj
     - name: Build
-      run: dotnet build .\FlagExplorerBackend.csproj --no-restore
+      run: dotnet build ..\..\FlagExplorerBackend.csproj --no-restore
     - name: Install Newman
       run: npm install -g newman
     - name: Run Postman Tests
