@@ -24,4 +24,4 @@ jobs:
     - name: Install Newman
       run: npm install -g newman
     - name: Run Postman Tests
-      run: newman run FlagExplorerAPI.postman_collection.json --folder ./Tests
+      run: newman run Tests.FlagExplorerBackendTests.postman_collection.json
