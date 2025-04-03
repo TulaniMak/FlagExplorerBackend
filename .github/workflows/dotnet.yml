@@ -22,7 +22,7 @@ jobs:
     - name: Build
       run: dotnet build ./FlagExplorerBackend.csproj --configuration Release --no-restore
     - name: Start API in the background
-      run: dotnet ./published-api/FlagExplorerBackend.dll &
+      run: dotnet /home/runner/work/FlagExplorerBackend/FlagExplorerBackend/bin/Release/net8.0/FlagExplorerBackend.dll &
           sleep 10  # Wait for API to start
     - name: Install Newman
       run: npm install -g newman
