@@ -33,10 +33,10 @@ jobs:
         sleep 30  # Wait for API to start
 
     - name: Check if API is running
-      run: curl -v http://localhost:5001 || curl -v http://127.0.0.1:5001
+      run: curl -v http://localhost:5001 
 
     - name: Install Newman
       run: npm install -g newman
 
     - name: Run Postman Tests
-      run: newman run Tests/FlagExplorerBackendTests.postman_collection.json --insecure
+      run: newman run ./Tests/FlagExplorerBackendTests.postman_collection.json --insecure
