@@ -11,6 +11,7 @@
 			"name": "GetAllCountriesTest",
 			"request": {
 				"method": "GET",
+				"url": "http://localhost:5001/api/countries",
 				"header": []
 			},
 			"response": []
@@ -43,6 +44,7 @@
 			],
 			"request": {
 				"method": "GET",
+				"url": "http://localhost:5001/api/countries/South Africa",
 				"header": [],
 				"url": {
 					"raw": "https://localhost:5001/api/countries/South Africa",
