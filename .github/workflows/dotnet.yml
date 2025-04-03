@@ -20,9 +20,10 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore ./FlagExplorerBackend.csproj
     - name: Build
-      run: dotnet build ./FlagExplorerBackend.csproj --no-restore
+      run: dotnet build ./FlagExplorerBackend.csproj --configuration Release --no-restore
     - name: Start API in the background
-      run: dotnet run --no-build --project ./FlagExplorerBackend.csproj 
+      run: dotnet ./published-api/FlagExplorerBackend.dll &
+          sleep 10  # Wait for API to start
     - name: Install Newman
       run: npm install -g newman
     - name: Run Postman Tests
