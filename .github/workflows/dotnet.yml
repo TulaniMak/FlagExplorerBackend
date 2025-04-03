@@ -17,14 +17,26 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
+        
     - name: Restore dependencies
       run: dotnet restore ./FlagExplorerBackend.csproj
-    - name: Build
+
+    - name: Build API in Release mode
       run: dotnet build ./FlagExplorerBackend.csproj --configuration Release --no-restore
+
+    - name: Publish API
+      run: dotnet publish ./FlagExplorerBackend.csproj --configuration Release --output ./published-api
+
     - name: Start API in the background
-      run: dotnet /home/runner/work/FlagExplorerBackend/FlagExplorerBackend/bin/Release/net8.0/FlagExplorerBackend.dll &
-          sleep 10  # Wait for API to start
+      run: |
+        dotnet ./published-api/FlagExplorerBackend.dll &
+        sleep 30  # Wait for API to start
+
+    - name: Check if API is running
+      run: curl -v http://localhost:5001 || curl -v http://127.0.0.1:5001
+
     - name: Install Newman
       run: npm install -g newman
+
     - name: Run Postman Tests
       run: newman run Tests/FlagExplorerBackendTests.postman_collection.json --insecure
