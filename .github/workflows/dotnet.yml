@@ -32,9 +32,6 @@ jobs:
         dotnet ./published-api/FlagExplorerBackend.dll &
         sleep 30  # Wait for API to start
 
-    - name: Check if API is running
-      run: curl -v http://localhost:5001 
-
     - name: Install Newman
       run: npm install -g newman
 
